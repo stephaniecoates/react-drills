@@ -1,18 +1,37 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import NewTask from './NewTask';
+import List from './List';
+//does list order of imports matter?
 
 class App extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      list: [],
+    }; 
+    this.addToList = this.addToList.bind(this);
+  }
+
+      addToList( input ) {
+        this.setState({
+          list: [...this.state.list, input],
+          //spread operator? Creates entirely new array instead of arr.push?
+        });
+      }
+
   render() {
+    
+    //are we allowed to do multiple returns in render? when to add parenthesis to function used as prop? When addToList has (), "this.props.add not a function", is that because it's invoked in NewTask?
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <h1>My to-do list:</h1>
+        <NewTask
+        add={this.addToList}/>
+        <List 
+        tasks={this.state.list}/>
       </div>
     );
   }
