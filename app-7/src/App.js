@@ -3,7 +3,6 @@ import logo from './logo.svg';
 import './App.css';
 import NewTask from './NewTask';
 import List from './List';
-//does list order of imports matter?
 
 class App extends Component {
   constructor() {
@@ -18,14 +17,11 @@ class App extends Component {
       addToList( input ) {
         this.setState({
           list: [...this.state.list, input],
-          //spread operator? Creates entirely new array instead of arr.push?
         });
       }
 
   render() {
-    
-    //are we allowed to do multiple returns in render? when to add parenthesis to function used as prop? When addToList has (), "this.props.add not a function", is that because it's invoked in NewTask?
-    return (
+     return (
       <div className="App">
         <h1>My to-do list:</h1>
         <NewTask
